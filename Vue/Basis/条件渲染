@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>条件渲染</title>
+  <script src="vue.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var vm =new Vue({
+        el:"#app",
+        data:{
+          ok:false,
+          type:'Leslie',
+          showMe:false
+        }
+      })
+    };
+  </script>
+</head>
+<body>
+   <div id="app">
+     <p v-if="ok">你是对的</p>
+     <p v-else-if="type === 'Leslie'">听风吟</p>
+     <p v-else>惊虹而过</p>
+     <p v-show="showMe">幺妹冯宝宝</p>
+   </div>
+</body>
+</html>
