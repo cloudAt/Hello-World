@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件监听</title>
+  <script src="vue.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var vm =new Vue({
+        el:"#app",
+        data:{
+          counter:0,
+          msg:"Vue.js !"
+        },
+        methods:{
+          adds:function(){
+            this.counter +=1;
+          },
+          greet:function(ev){
+            alert("Hello "+this.msg);
+            if (ev) {
+              console.log(ev.target.tagName);
+            }
+          },
+          say:function(info,event){
+             alert(info +' '+this.msg)
+            console.log(event.target.tagName);
+          }
+        }
+      })
+    };
+  </script>
+</head>
+<body>
+   <div id="app">
+     <p>按钮已经被按了{{ counter }}次啦。</p>
+     <button v-on:click="counter+=1">+1s</button>
+     <button v-on:click="adds">续1s</button>
+     <button v-on:click="greet">Greet</button>
+     <!-- event是一个内置的特殊变量，可以访问原始的DOM事件。 -->
+     <button v-on:click="say('Hi',event)">Say</button>
+   </div>
+    </div>
+</body>
+</html>
