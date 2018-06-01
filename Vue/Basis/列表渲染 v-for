@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>列表渲染</title>
+  <script src="vue.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var vm = new Vue({
+        el:"#app",
+        data:{
+          items:[
+            {msg:'这里会和平的。'},
+            {msg:'索里亚克痛。'}
+          ],
+          object:{
+            name:"Leslie",
+            sex:"male",
+            age:"22"
+          }
+        }
+      })
+    };
+  </script>
+</head>
+<body>
+  <ul id="app">
+1.通过数组列表迭代
+     <!-- index是可选的序列参数，从0开始。 -->
+     <!-- of 与 in 可以相互替代 -->
+    <li v-for="(item,index) in items">
+      使用In {{ index+1 }} {{ item.msg }}
+    </li><br>
+    <li v-for="item of items">
+      使用Of {{ item.msg }}
+    </li><br>
+2.通过对象属性迭代
+     <!-- key 与 index 也是可选的参数，key代表对象的键名，index为序列 -->
+     <li v-for="(value,key,index) in object">
+       {{ index+1 }}.{{ key }}: {{ value }}
+     </li>
+3.直接将迭代内容写到 V-for中.简单粗暴
+     <li v-for="n in 10">
+       {{ n }}
+     </li>
+  </ul>
+
+   <!-- 当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用“就地复用”策略。
+如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素，
+并且确保它在特定索引下显示已被渲染过的每个元素。
+   这个默认的模式是高效的，但是只适用于不依赖子组件状态或临时 DOM 状态 (例如：表单输入值) 的列表渲染输出。
+   为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，
+   需要为每项提供一个唯一 key 属性。理想的 key 值是每项都有的且唯一的 id。
+它的工作方式类似于一个属性，所以你需要用 v-bind 来绑定动态值 (在这里使用简写)：
+<div v-for="item in items" :key="item.id">
+  ...
+</div>
+尽可能在使用 v-for 时提供 key，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。
+因为它是 Vue 识别节点的一个通用机制，key 并不与 v-for 特别关联，key 还具有其他用途。 -->
+</body>
+</html>
