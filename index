@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var vm =new Vue({
+        el:"#app",
+        data:{
+          msg:'<p style="color:red">Hello World</p>',
+          url:'Les-1.html',
+          kids:[
+            {text:'学习JAVASCRIPT'},
+            {text:'学习VUE'},
+            {text:'整个大项目'}
+          ]
+        }
+      });
+    };
+  </script>
+</head>
+<body>
+  <div id="app" >
+    <a v-bind:href="url">百度</a>
+    <p v-html="msg"></p>
+    <ol>
+      <li v-for="k in kids">
+        {{ k.text }}
+      </li>
+    </ol>
+  </div>
+</body>
+</html>
