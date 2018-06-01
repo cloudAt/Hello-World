@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+//绑定HTML Class的方法中其中三种：1.2.对象语法。3.数组语法。
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>class绑定</title>
+  <script src="vue.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+      window.onload=function(){
+        var vm   =new Vue({
+          el:"#app",
+          data:{
+            isActive:true,
+            isBig:false,
+            classObj:{
+              active:false,
+              fontsize:true
+            },
+            activeClass:'active',
+            errorClass:'fontsize'  //引号不能忘记。
+          }
+        })
+      }
+  </script>
+  <style media="screen">
+  .active{
+    color: skyblue;
+  }
+  .fontsize{
+    font-size: 20px;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    //对象语法1：墨迹   <p v-bind:class="{active: isActive ,fontsize:isBig }">你们都说我瓜，其实我一点都不瓜，大多时候我都机智得一逼。</p>
+    //对象语法2: 推荐   <p v-bind:class="classObj">你晓得我的立场，有些事，做起来不大方便。</p>
+    //数组语法：        <p v-bind:class="[activeClass,errorClass]">张学友新出了首歌你知不知道，回头太难。</p>
+  </div>
+</body>
+</html>
