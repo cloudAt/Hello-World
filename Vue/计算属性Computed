@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>计算属性</title>
+  <script src="vue.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var vm = new Vue({
+               el: '#app',
+               data: {
+                 goods: {id:1, name:"红烧牛肉面", price:5, amount:2}
+               },
+               computed: {
+                 // 计算属性的 getter
+                 total: function () {
+                   // `this` 指向 vm 实例
+                   return this.goods.price*this.goods.amount;
+                 }
+               }
+             })
+    };
+  </script>
+</head>
+<body>
+    <div id="app">
+      <p>您购买了{{ goods.amount }}份{{ goods.name }}----总计{{ total }}元。</p>
+    </div>
+</body>
+</html>
