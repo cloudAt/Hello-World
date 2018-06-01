@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="vue.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var vm =new Vue({
+        el:"#app",
+        data:{
+          items:[
+            {name:"红烧牛肉面",isComplete:true},
+            {name:"藤椒牛肉面",isComplete:false}
+          ]
+        }
+      })
+    };
+  </script>
+</head>
+<body>
+    <ul id="app">
+      <!-- 当处于同一节点，v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中。
+      当想为仅有的一些项渲染节点时，这种优先级的机制会十分有用 -->
+      <li v-for="item in items" v-if="item.isComplete" >
+        {{ item.name }}
+      </li><br>
+      <!-- 而如果目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 <template>)上 -->
+      <template v-if="items.length >3">
+        <li v-for="item in items">
+          {{ item.name }}
+        </li>
+      </template>
+      <template v-else>No item left</template>
+    </ul>
+</body>
+</html>
